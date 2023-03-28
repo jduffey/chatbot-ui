@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import react from '@vitejs/plugin-react';
+import react from '@testing-library/react'
 
 export default defineConfig({
   resolve: {
