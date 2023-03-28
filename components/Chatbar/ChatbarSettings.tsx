@@ -33,7 +33,7 @@ export const ChatbarSettings: FC<Props> = ({
 
   const myUsageContent = (
     <div className="p-2 bg-white/10 rounded">
-      <p>Dummy text goes here</p>
+      <p>{"Usage stats and current billing total ($) may not be feasible. Can't seem to find an API endpoint for this."}</p>
     </div>
   );
   return (
@@ -64,8 +64,7 @@ export const ChatbarSettings: FC<Props> = ({
         text={t('My usage')}
         icon={<IconChartBar size={18} />}
         onClick={() => setMyUsageExpanded(!myUsageExpanded)}
-        extraClassName={`${myUsageExpanded ? 'h-32' : 'h-auto'
-          } transition-all duration-200 ease-in-out`}
+        extraClassName={`h-auto transition-all duration-200 ease-in-out`}
       />
       {myUsageExpanded && myUsageContent}
 
