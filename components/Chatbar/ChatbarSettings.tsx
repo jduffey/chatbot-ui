@@ -1,7 +1,7 @@
 import { SupportedExportFormats } from '@/types/export';
 import { IconChartBar, IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Import } from '../Settings/Import';
 import { Key } from '../Settings/Key';
 import { SidebarButton } from '../Sidebar/SidebarButton';
@@ -29,6 +29,13 @@ export const ChatbarSettings: FC<Props> = ({
   onImportConversations,
 }) => {
   const { t } = useTranslation('sidebar');
+  const [myUsageExpanded, setMyUsageExpanded] = useState(false);
+
+  const myUsageContent = (
+    <div className="p-2 bg-white/10 rounded">
+      <p>Dummy text goes here</p>
+    </div>
+  );
   return (
     <div className="flex flex-col items-center space-y-1 border-t border-white/20 pt-1 text-sm">
       {conversationsCount > 0 ? (
@@ -56,8 +63,11 @@ export const ChatbarSettings: FC<Props> = ({
       <SidebarButton
         text={t('My usage')}
         icon={<IconChartBar size={18} />}
-        onClick={() => { console.log('My usage clicked') }}
+        onClick={() => setMyUsageExpanded(!myUsageExpanded)}
+        extraClassName={`${myUsageExpanded ? 'h-32' : 'h-auto'
+          } transition-all duration-200 ease-in-out`}
       />
+      {myUsageExpanded && myUsageContent}
 
       <Key apiKey={apiKey} onApiKeyChange={onApiKeyChange} />
     </div>
