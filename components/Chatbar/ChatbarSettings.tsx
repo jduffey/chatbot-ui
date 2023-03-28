@@ -1,5 +1,5 @@
 import { SupportedExportFormats } from '@/types/export';
-import { IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
+import { IconChartBar, IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import { FC } from 'react';
 import { Import } from '../Settings/Import';
@@ -51,6 +51,12 @@ export const ChatbarSettings: FC<Props> = ({
         onClick={() =>
           onToggleLightMode(lightMode === 'light' ? 'dark' : 'light')
         }
+      />
+
+      <SidebarButton
+        text={t('My usage')}
+        icon={<IconChartBar size={18} />}
+        onClick={() => { console.log('My usage clicked') }}
       />
 
       <Key apiKey={apiKey} onApiKeyChange={onApiKeyChange} />
