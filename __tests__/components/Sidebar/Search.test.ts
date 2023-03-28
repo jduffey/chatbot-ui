@@ -1,12 +1,23 @@
 import { it, describe, expect } from 'vitest';
 
-import { render, screen } from '@testing-library/react';
+import { Search, Props } from '@/components/Sidebar/Search';
 
-import { Search } from '@/components/Sidebar/Search';
+import { render, screen } from '@testing-library/react';
 
 describe('Search', () => {
   it('should render', () => {
-    const wrapper = mount(Search);
-    expect(wrapper.html()).toMatchSnapshot();
+    const onSearch = (_searchTerm: string) => { };
+
+    const props: Props = {
+      placeholder: "PLACEHOLDER",
+      searchTerm: "SEARCH_TERM",
+      onSearch: onSearch,
+    };
+
+    const { container } = render(
+      <Search>
+    );
+
+    expect(container.innerHTML).toMatchSnapshot();
   });
 });
